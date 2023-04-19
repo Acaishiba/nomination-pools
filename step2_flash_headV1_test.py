@@ -1,37 +1,37 @@
 import mysql.connector
 import requests
 import time
+from substrateinterface import SubstrateInterface, Keypair
+from substrateinterface.exceptions import SubstrateRequestException
 
 def flash_table_head(table_name):
     # 连接 MySQL 数据库
     cnx = mysql.connector.connect(
       host="127.0.0.1",
       user="root",
-      password="xxxxx",
-      database="database"
+      password="1234567890",
+      database="pools"
     )
 
     # 定义查询 API 的 URL 和请求头
     url = 'https://polkadot.api.subscan.io/api/scan/nomination_pool/pools'
     # 查询详细信息的url为url2
     url2 = 'https://polkadot.api.subscan.io/api/scan/nomination_pool/pool'
+    #RPC通信url
+    substrate = SubstrateInterface(url="https://polkadot.api.onfinality.io/rpc?apikey=cc3818f8-32af-4ade-85be-ac66e9a7fad4")
 
     headers = {
         'Content-Type': 'application/json',
-        'X-API-Key': 'xxxxxxxxxxxxxyour api key'
+        'X-API-Key': 'cee026a8ae2e4fd59a61bab93c7f9406'
     }
 
     params = {}
 
     #开始获取总矿池数
-    response_pools_count = requests.post(url, headers=headers, json=params)
+    response_pools_count = substrate.query('NominationPools', 'LastPoolId')
+    print(response_pools_count)
 
-    if response_pools_count.status_code == 200:
-        pools_count = response_pools_count.json()["data"]["count"]
-        # 处理查询结果
-        print(pools_count)
-    else:
-        print(f"请求失败，HTTP状态码：{response_pools_count.status_code}")
+
 
 
     cur = cnx.cursor()
@@ -47,7 +47,7 @@ def flash_table_head(table_name):
 
 
     # 获取新的 pool_ID 值
-    new_pool_id = pools_count
+    new_pool_id = response_pools_count
 
     # 如果原最大值大于等于新值，则不进行修改
     if max_pool_id >= new_pool_id:
@@ -57,8 +57,8 @@ def flash_table_head(table_name):
         increment = new_pool_id - max_pool_id
         print('new is',new_pool_id)
         print('old is',max_pool_id)
+        print('update ID to ',new_pool_id,'with',increment)
 
-        print(increment)
 
         # 插入新记录
         for i in range(max_pool_id + 1, new_pool_id + 1):
@@ -86,7 +86,7 @@ def flash_table_head(table_name):
             poolid_count = int(poolid[0])
             response_state = requests.post(url2, headers=headers, json={"pool_id": poolid_count})
             print(poolid_count)
-            print(response_state.json())
+            #print(response_state.json())
 
             if response_state.json()["code"] == 0:
             #获取各个rpc数据
