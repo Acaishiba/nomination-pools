@@ -6,13 +6,13 @@ import time
 # 连接到 pools.db 数据库
 conn = pymysql.connect(
     host="127.0.0.1",
-    user="root",
-    password="xxxxxxx",
+    user="xxxyourusernamexx",
+    password="xxyourpasswordxxxxx",
     database="yourdatabase"
 )
 # 定义查询 API 的 URL 和请求头
 url = 'https://polkadot.api.subscan.io/api/scan/account/reward_slash'
-headers = {'Content-Type': 'application/json', 'X-API-Key': 'cee026a8ae2e4fd59a61bab93c7f9406'}
+headers = {'Content-Type': 'application/json', 'X-API-Key': 'xxxxxxxxyourapikeyxxxxx'}
 #row_page = {'row': 5, 'page': 0}
 #payload = {'row': 5, 'page': 0, 'address': '13UVJyLnbVp8c4FQeiGZuEPKfanQpr45nvH5LmUqKKqjNQSy'}
 

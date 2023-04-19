@@ -5,8 +5,8 @@ import time
 # 连接到数据库
 conn = pymysql.connect(
     host="127.0.0.1",
-    user="root",
-    password="xxxxxxx",
+    user="yourusername",
+    password="xxxyourpasswordxxxx",
     database="yourdatabase"
 )
 # 初始化时间
