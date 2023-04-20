@@ -8,8 +8,8 @@ def flash_table_head(table_name):
     # 连接 MySQL 数据库
     cnx = mysql.connector.connect(
       host="127.0.0.1",
-      user="root",
-      password="1234567890",
+      user="xxxxyourusername",
+      password="xxxxxxxxxyourpassword",
       database="pools"
     )
 
@@ -18,11 +18,11 @@ def flash_table_head(table_name):
     # 查询详细信息的url为url2
     url2 = 'https://polkadot.api.subscan.io/api/scan/nomination_pool/pool'
     #RPC通信url
-    substrate = SubstrateInterface(url="https://polkadot.api.onfinality.io/rpc?apikey=cc3818f8-32af-4ade-85be-ac66e9a7fad4")
+    substrate = SubstrateInterface(url="https://polkadot.api.onfinality.io/rpc?apikey=xxxxxxxxxxxxxxxxxxx")
 
     headers = {
         'Content-Type': 'application/json',
-        'X-API-Key': 'cee026a8ae2e4fd59a61bab93c7f9406'
+        'X-API-Key': 'xxxxxxxxxxxxxxxxxx'
     }
 
     params = {}
