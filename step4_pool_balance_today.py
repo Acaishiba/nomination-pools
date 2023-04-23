@@ -10,12 +10,12 @@ from substrateinterface.exceptions import SubstrateRequestException
 # 连接到 pools.db 数据库
 conn = pymysql.connect(
     host="127.0.0.1",
-    user="root",
-    password="1234567890",
+    user="xxxxxxx",
+    password="xxxxxx",
     database="pools"
 )
 # 定义查询 API 的 URL 和请求头
-substrate = SubstrateInterface(url="https://polkadot.api.onfinality.io/rpc?apikey=cc3818f8-32af-4ade-85be-ac66e9a7fad4")
+substrate = SubstrateInterface(url="https://polkadot.api.onfinality.io/rpc?apikey=xxxxxxxxxxxxx")
 
 
 table_name = 'Pool_balance'
