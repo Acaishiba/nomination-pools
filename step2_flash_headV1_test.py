@@ -47,7 +47,7 @@ def flash_table_head(table_name):
 
 
     # 获取新的 pool_ID 值
-    new_pool_id = response_pools_count
+    new_pool_id = int(str(response_pools_count))
 
     # 如果原最大值大于等于新值，则不进行修改
     if max_pool_id >= new_pool_id:
