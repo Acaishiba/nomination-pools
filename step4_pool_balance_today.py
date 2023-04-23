@@ -10,12 +10,12 @@ from substrateinterface.exceptions import SubstrateRequestException
 # 连接到 pools.db 数据库
 conn = pymysql.connect(
     host="127.0.0.1",
-    user="xxyourusernamexxx",
-    password="xxxxxxyourpasswordxxxx",
+    user="root",
+    password="1234567890",
     database="pools"
 )
 # 定义查询 API 的 URL 和请求头
-substrate = SubstrateInterface(url="https://polkadot.api.onfinality.io/rpc?apikey=xxxxxxxxxxxxxxxxxxxxxx")
+substrate = SubstrateInterface(url="https://polkadot.api.onfinality.io/rpc?apikey=cc3818f8-32af-4ade-85be-ac66e9a7fad4")
 
 
 table_name = 'Pool_balance'
@@ -60,7 +60,7 @@ try:
             print(balance)
              # 更新 rewards 表中今天的这一列
             cur.execute(f"UPDATE {table_name} SET `{date_str}`={balance:.3f} WHERE pool_ID='{ID}'")
-            print("---------updating points--------")
+            print("---------updating  points--------")
         else:
             balance = float(0.000)
             cur.execute(f"UPDATE {table_name} SET `{date_str}`={balance:.3f} WHERE pool_ID='{ID}'")
