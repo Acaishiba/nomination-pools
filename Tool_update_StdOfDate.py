@@ -51,6 +51,7 @@ def update_std(the_date, date_range):
                 cur.execute(f"SELECT `{start_date+datetime.timedelta(days=i)}` FROM {apr_table_name} WHERE pool_ID={id}")
                 day_mark = cur.fetchall()
                 day_mark = day_mark [0] [0]
+                #循环插入每个日期的收益情况
                 #print(day_mark)
                 apr_mark.append(day_mark)
 
